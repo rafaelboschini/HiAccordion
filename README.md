@@ -1,7 +1,7 @@
 
 # HiAccordion
 
-This is a simple nested-list component made in VanillaJs.
+This is a simple nested-list component.
 
 This project is jQuery Free!!! 🤟
 
@@ -10,6 +10,7 @@ This project is jQuery Free!!! 🤟
 
 Import  `hiaccordion.css` and `hiaccordion.js` in your project.
 
+![enter image description here](https://raw.githubusercontent.com/rafaelboschini/HiAccordion/main/public/print-list.png)
 ## 🤹 How to use
 
 You can create an instance using a `new` operator, like an example below:
