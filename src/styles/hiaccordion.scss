@@ -1,0 +1,96 @@
+$check-background: #00AEEF;
+$checkicon-color: #ffffff;
+$toggleicon-color:#B4B4AA;
+$item-heigth: 46px;
+
+.hiaccordion {
+    font-family: 'Verdana';
+    font-size: 14px;
+
+    .hiaccordion-item {
+        list-style-type: none;
+        position: relative;    
+        margin-bottom: 5px;
+        min-height: $item-heigth;
+
+        ul[parent-id] {
+            display: none;
+            margin-top: 10px;
+
+            &[aria-expanded=true] ~ i::before {
+                transform: rotate(135deg);
+            }
+
+            &[aria-expanded=true] {
+                display: block;
+            }
+        }
+
+        /* toggle icon */
+        i {
+            position: absolute;
+            width: 30px;
+            height: $item-heigth;
+            top: 0px;
+            right: 0px;
+            cursor: pointer;
+
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 6px;
+                height: 6px;
+                top: 40%;
+                right: 10px;
+                border-left: solid 2px $toggleicon-color;
+                border-bottom: solid 2px $toggleicon-color;
+                transform: rotate(315deg);
+                transition: transform .6s ease-out;
+            }
+        }
+
+        label {
+            display: block;            
+            width: 100%;
+            text-indent: 30px;
+            cursor: pointer;
+            line-height: $item-heigth;
+
+            &:hover {
+                background-color: #eee;
+            }
+        }
+
+        /** virtual DOM checkbox */
+        span {
+            display: block;
+            border:solid 1px $toggleicon-color;
+            position: absolute;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            top: 15px;
+            left: 10px;
+            border-radius: 2px;
+
+            &[aria-selected=true] {
+                background-color: $check-background;
+                border:solid 1px transparent;
+                
+                &:before {
+                    content: "";
+                    display: block;
+                    position: inherit;
+                    width: 4px;
+                    height: 9px;
+                    left: 4px;
+                    bottom: 3px;
+                    border-right: solid 2px $checkicon-color;
+                    border-bottom: solid 2px $checkicon-color;
+                    transform: rotate(50deg);
+                }
+            }
+        }
+    }
+}

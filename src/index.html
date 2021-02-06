@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>HiAcordion Example</title>
+        <link href="styles/hiaccordion.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .page-container {
+                display: flex;
+                flex-direction: row;
+                margin: auto;
+            }
+            .page-container > div {
+                display: flex;
+                flex:auto 1 1;
+                border:solid 1px black;
+            }
+
+            .page-container .page-left ul{
+                width: 100%;
+            }
+
+            .page-container .page-right {
+                max-height: 600px;
+                overflow: auto;
+                justify-content: right;
+                
+            }
+
+            .page-container .page-right .accordion-two{
+                width: 500px;
+            }
+
+            /* Customize checkbox background */
+            .page-container .page-right .accordion-two span[aria-selected=true]{
+                background-color: tomato;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-summary">
+            <h2>Summary</h2>
+            <p>0 items selected</p>
+            <p>0 items collapsed</p>
+        </div>
+
+        <div class="page-container">
+            <div class="page-left">
+                <div class="accordion-one"></div>
+            </div>
+            <div class="page-right">
+                <div class="accordion-two"></div>
+            </div>
+        </div>       
+        <script src="scripts/hiaccordion.js"></script>
+        <script>
+            function fetchData(callback) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        if(callback) callback(JSON.parse(xhttp.responseText));
+                    }
+                };
+
+                xhttp.open("GET", "\data", true);
+                xhttp.send();
+            }
+
+            document.addEventListener("DOMContentLoaded", function(event) {
+                /** Example without initial bind with item click call back*/
+                var accordionOne = new HiAccordion({
+                    elem: document.getElementsByClassName('accordion-one')[0],
+                    checkItemCallBack: function(e){
+                        document.querySelector('.page-summary').querySelectorAll('p')[0].innerText = `${accordionOne.getAllSelected().length} items selected`;
+                        
+                    },
+                    expandItemCallBack: function(e) {
+                        document.querySelector('.page-summary').querySelectorAll('p')[1].innerText = `${accordionOne.getAllExpanded().length} items collapsed`;
+                    }
+                });
+
+                fetchData(function(data) {
+                    accordionOne.bind(data); /** bind and rendering component */
+
+                    /** Example of simple instance with bind in constructor */
+                    new HiAccordion({
+                        elem: document.getElementsByClassName('accordion-two')[0], 
+                        data: data
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

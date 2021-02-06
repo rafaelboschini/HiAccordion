@@ -1,0 +1,15 @@
+{
+  "name": "hiacordion",
+  "version": "1.0.0",
+  "description": "Accordion component how works with nested lists with infinite levels",
+  "scripts": {
+    "start": "npm run build-sass & node .\\server.js",
+    "build-sass": "sass .\\src\\styles\\hiaccordion.scss .\\src\\styles\\hiaccordion.css",
+    "start-py": "npm run build-sass & python -m SimpleHTTPServer 3000"
+  },
+  "author": "rafael boschini <rafaelboschini@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
