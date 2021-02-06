@@ -197,11 +197,6 @@ class HiAccordion {
             /** create children items */
             let childrensDOM = this.render(listData[countItems].children, `${this.wildcard}-${listData[countItems].id}`);
             if (childrensDOM != null) {
-
-
-                //let nestedChildren = document.createElement("li");
-                //nestedChildren.classList.add('hiaccordion-item');
-                
                 nestedItem.appendChild(childrensDOM);
 
                 let toggleIcon = document.createElement("i");
