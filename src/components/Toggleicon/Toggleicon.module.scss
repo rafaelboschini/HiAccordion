@@ -1,0 +1,23 @@
+.Toggleicon {
+    display: block;
+    width: 20px;
+    height: 20px;
+        
+    &::before{
+        content: '';
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-left: solid 2px #B4B4AA;
+        border-bottom: solid 2px #B4B4AA;
+        transform: rotate(315deg);
+        transition: all .8s;
+    }
+
+    &[aria-expanded=true] {
+        &::before {
+            transform: rotate(135deg);
+        }
+    }
+
+}

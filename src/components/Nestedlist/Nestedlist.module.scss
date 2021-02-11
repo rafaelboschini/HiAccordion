@@ -1,0 +1,37 @@
+$children-tab: 25px;
+$list-background: #fff;
+
+.Nestedlist {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: $list-background;
+    color: #000;
+    cursor: pointer;
+    
+    .parent {
+        display: flex;
+        flex-direction: row;
+
+        > div {
+            flex: auto;
+            text-align: left;
+            height: 50px;
+            line-height: 50px;
+            text-indent: 10px;
+            
+            &:last-child,
+            &:first-child{
+                max-width: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    .children {
+        padding-left: $children-tab;
+
+    }
+}
